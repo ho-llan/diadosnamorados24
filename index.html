@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia dos Namorados</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="content">
+        <h1>Feliz Dia dos Namorados!</h1>
+
+        <div id="overlay"></div>
+
+        <div class="gallery-row">
+            <div class="gallery">
+                <img src="img/foto01.jpg" alt="Foto 1" onclick="openModal('img/foto01.jpg', 'Oi, venho aqui dizer o quão importante você é pra mim. Existem várias formas de fazer isso, porém como não começar falando sobre você. Uma mulher decidida que sabe seus objetivos e sabe muito bem o que quer. Tem uma personalidade forte e além disso é muito inteligente, sempre com os melhores conselhos e dicas para a maiorias das situações......')">
+                <img src="img/foto02.jpg" alt="Foto 2" onclick="openModal('img/foto02.jpg', '......É uma companheira para todos os tipos de lugares, já fomos em restaurantes, shows, museus, praias, trilhas, academia, shoppings, cinema, até já foi me ver jogar bola que é algo que quase nunca faço e a melhor companheira para a minha vida toda......')">
+                <img src="img/foto03.jpg" alt="Foto 3" onclick="openModal('img/foto03.jpg', '......O que seria de mim sem você para me indicar séries e filmes, me ajudar a comprar roupa, a parar pra pensar melhor e de outras formas nas situações, me ajudar com as matérias e me enviar os concursos. O que você faz por mim vai muito além de um namoro e isso que me deixa muito tranquilo em saber que achei a pessoa que quero pra sempre......')">
+                <img src="img/foto04.jpg" alt="Foto 4" onclick="openModal('img/foto04.jpg', '......Nesse segundo ano de dia dos namorados com você vejo que tudo vai muito além do que vemos e o que podemos fazer no momento, mesmo as vezes não se vendo, não podendo estar junto todos os dias. Sinto que você está comigo e essa sensação é muito boa, que diante de tantas coisas te faz você simplesmente esquecer todos os problemas por um momento.')">
+            </div>
+        </div>
+        <div class="gallery-row">
+            <div class="gallery">
+                <img src="img/foto05.jpg" alt="Foto 5" onclick="openModal('img/foto05.jpg', 'Se falassemos que estáriamos namorando agora a gente com certeza iria rir muito, falar que era loucura. Mas no fundo depois do nosso primeiro beijo, eu me senti a pessoa mais feliz do mundo e sim até hoje me sinto muito sortudo e abençoado em ter você como namorada......')">
+                <img src="img/foto06.jpg" alt="Foto 6" onclick="openModal('img/foto06.jpg', '......Sei que as coisas agora não estão das melhores, mas pode contar comigo pra tudo. Eu não vou te largar em momento nenhum, nem o mais difícil que ele seja. Acredito que juntos e com calma conseguimos superar e resolver qualquer problema......')">
+                <img src="img/foto07.jpg" alt="Foto 7" onclick="openModal('img/foto07.jpg', '......A vide é feita de altos e baixos e com você parece que isso não existe, sempre estou bem, no alto. Você consegue fazer uma diferença gigante na minha vida e espero conseguir um dia te mostrar como eu vejo você. Como você é linda e perfeita......')">
+                <img src="img/foto08.jpg" alt="Foto 8" onclick="openModal('img/foto08.jpg', '......Por fim, venho dizer o quão grato e feliz estou com você e o quanto eu Te Amo. Nenhuma medida ou número é capaz de definir a quantidade do que sinto por você e nem ter parâmetro para sua beleza. Amor você é a pessoa mais linda do universo e dos multiversos da loucura e eu Te Amo Mil Milhôes e nada vai mudar isso. TE AMO MEU AMOR!!!&#128147&#128150')">
+            </div>
+        </div>
+
+        <button class="presente-btn" onclick="alert('Será entregue mais tarde!')">
+            <img src="img/presente.png" alt="Presente">
+            Presente
+        </button>        
+
+        <div id="modal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+                <img id="modal-img" src="" alt="Imagem Ampliada">
+                <div id="modal-desc" class="modal-desc"></div>
+            </div>
+        </div>
+
+        <div id="audio-controls">
+            <audio id="background-music" src="msc/Trevor Daniel - Falling (Official Music Video).mp3" loop autoplay></audio>
+            <div id="music-controls">
+                <button id="play-pause-btn" onclick="togglePlayPause()">Play</button>
+                <input id="seek-bar" type="range" min="0" value="0" max="100">
+                <span id="elapsed-time">0:00</span> / <span id="total-time">0:00</span>
+                <input id="volume-bar" type="range" min="0" max="100" value="100" onchange="setVolume()">
+                <span id="volume-icon" class="volume-icon">🔊</span>
+            </div>
+            <select id="music-selector" onchange="changeMusic()">
+                <option value="msc/Trevor Daniel - Falling (Official Music Video).mp3">Falling</option>
+                <option value="msc/Swap It Out.mp3">Swap It Out</option>
+                <option value="msc/Ariana Grande - get well soon (Official Audio).mp3">Get Well Soon</option>
+            </select>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

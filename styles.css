@@ -1,0 +1,315 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    position: relative; /* Adicionado para posicionamento do conteúdo */
+}
+
+.content {
+    position: relative; /* Adicionado para o conteúdo ficar acima do fundo */
+    z-index: 1; /* Adicionado para garantir que o conteúdo fique acima do fundo */
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/lua.jpg'); /* Caminho para sua imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.7; /* Opacidade de 60% */
+    z-index: -1; /* Mantém a imagem de fundo atrás do conteúdo */
+}
+
+h1 {
+    margin-top: 20px;
+    color: #ff69b4; /* Cor rosa */
+    display: inline-block; /* Permite que o contorno seja aplicado corretamente */
+    padding: 0px 10px; /* Adiciona espaço interno ao redor do texto */
+    border-radius: 10px; /* Adiciona bordas arredondadas */
+    text-shadow: 1px 1px 2px #ffffff; /* Adiciona um contorno preto ao redor do texto */
+}
+
+h1:hover {
+    background-position: 100%; /* Move o degradê para o lado direito ao passar o mouse */
+}
+
+.gallery-row {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+}
+
+.gallery img {
+    margin: 10px;
+    width: 180px; /* Reduz a largura das imagens */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.5s;
+    border-radius: 20px;
+    border: 5px solid #ffd700;
+}
+
+.gallery img:hover {
+    border-color: #ff69b4;
+    transform: scale(1.1); /* Aumenta a escala em 10% */
+    transition: transform 0.2s; /* Adiciona uma transição suave */
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Cor semi-transparente */
+    display: none; /* Inicialmente oculto */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 50%; /* Posicionando no meio horizontal */
+    top: 50%; /* Posicionando no meio vertical */
+    transform: translate(-50%, -50%); /* Centralizando o modal */
+    width: 90%; /* Aumentando o tamanho em 30% */
+    max-width: 850px; /* Definindo uma largura máxima */
+    margin: 0 auto; /* Removendo a margem vertical */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content {
+    display: flex;
+    align-items: center;
+}
+
+.modal img {
+    width: 50%;
+    margin-right: 20px;
+    border-radius: 10px; /* Arredondando as bordas */
+}
+
+.modal-desc {
+    font-size: 16px; /* Diminuindo o tamanho do texto */
+    color: #333;
+    text-align: left;
+}
+
+.close {
+    color: #ff69b4;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    transition: color 0.3s; /* Adicionando uma transição de cor ao botão de fechar */
+}
+
+.close:hover,
+.close:focus {
+    color: #ff1493; /* Mudando a cor ao passar o mouse sobre o botão de fechar */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.presente-btn {
+    position: relative;
+    background-color: #ff69b4;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: -10px;
+    overflow: hidden;
+    border: 1px solid #ffd700; /* Alteração na cor do contorno */
+}
+
+.presente-btn:hover {
+    border: 2px solid;
+    border-color: #ff1493; /* Cor do contorno ao passar o mouse: rosa */
+}
+
+.presente-btn img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.presente-btn:hover img {
+    opacity: 1;
+}
+
+#audio-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* Cor de fundo */
+    padding: 10px;
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    display: flex;
+    justify-content: space-between; /* Distribui os elementos com espaço entre eles */
+    align-items: center;
+}
+
+#music-controls {
+    display: flex;
+    align-items: center;
+    width: 90%; /* Ocupa 80% da largura */
+}
+
+#music-controls button {
+    margin: 0 10px;
+    padding: 8px 15px;
+    background-color: #ff69b4; /* Cor do botão */
+    color: #fff; /* Cor do texto */
+    border: 1px solid #ff1493;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#music-controls button:hover {
+    background-color: #ff1493; /* Cor do botão ao passar o mouse */
+    border: 1px solid #ffd700;
+}
+
+#seek-bar {
+    flex-grow: 1; /* Faz a barra de busca ocupar o espaço disponível */
+    margin: 0 3px;
+    width: 60%; /* Define a largura da barra de progresso */
+}
+
+/* Estilos para a barra de musica */
+#seek-bar {
+    -webkit-appearance: none; /* Remove o estilo padrão */
+    appearance: none;
+    height: 6px; /* Altura da barra de musica */
+    width: 7%; /* Largura da barra de volume */
+    background: #ff69b4; /* Cor de fundo da barra de volume */
+    outline: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Borda arredondada */
+    border: 2px solid #ff1493; /* Adiciona contorno cor-de-rosa */
+}
+
+/* Estilos para o thumb (ponteiro) da barra de volume */
+#seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove o estilo padrão */
+    appearance: none;
+    width: 15px; /* Largura do thumb */
+    height: 15px; /* Altura do thumb */
+    background: #ff69b4; /* Cor do thumb */
+    border-radius: 50%; /* Deixa o thumb redondo */
+    cursor: pointer; /* Mostra o cursor de apontar */
+    border: 1px solid #ff1493;
+}
+
+/* Estilos para o thumb (ponteiro) da barra de volume no Firefox */
+#seek-bar::-moz-range-thumb {
+    width: 10px; /* Largura do thumb */
+    height: 10px; /* Altura do thumb */
+    background: #ff69b4; /* Cor do thumb */
+    border-radius: 50%; /* Deixa o thumb redondo */
+    cursor: pointer; /* Mostra o cursor de apontar */
+}
+
+#elapsed-time,
+#total-time {
+    margin: 0 5px;
+    font-size: 14px;
+}
+
+#music-selector {
+    margin: 0 40px 0px 0px;
+    padding: 5px 10px;
+    border: 1.5px solid #ff1493;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Estilos para a barra de volume */
+#volume-bar {
+    -webkit-appearance: none; /* Remove o estilo padrão */
+    appearance: none;
+    height: 8px; /* Altura da barra de volume */
+    width: 7%; /* Largura da barra de volume */
+    background: #ff69b4; /* Cor de fundo da barra de volume */
+    outline: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Borda arredondada */
+    border: 2px solid #ff1493; /* Adiciona contorno cor-de-rosa */
+    margin: 0px 0px 0px 15px;
+}
+
+/* Estilos para o thumb (ponteiro) da barra de volume */
+#volume-bar::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove o estilo padrão */
+    appearance: none;
+    width: 13px; /* Largura do thumb */
+    height: 13px; /* Altura do thumb */
+    background: #ff69b4; /* Cor do thumb */
+    border-radius: 50%; /* Deixa o thumb redondo */
+    cursor: pointer; /* Mostra o cursor de apontar */
+    border: 1px solid #ff1493;
+}
+
+/* Estilos para o thumb (ponteiro) da barra de volume no Firefox */
+#volume-bar::-moz-range-thumb {
+    width: 10px; /* Largura do thumb */
+    height: 10px; /* Altura do thumb */
+    background: #ff69b4; /* Cor do thumb */
+    border-radius: 50%; /* Deixa o thumb redondo */
+    cursor: pointer; /* Mostra o cursor de apontar */
+}
+
+/* Media queries para responsividade */
+@media (max-width: 768px) {
+    .gallery img {
+        width: 100px; /* Reduz a largura das imagens em telas menores */
+    }
+
+    #music-controls {
+        flex-direction: column; /* Coloca os controles de música em coluna */
+        align-items: flex-start; /* Alinha à esquerda */
+    }
+
+    #seek-bar, #volume-bar {
+        width: 100%; /* Ajusta a largura das barras */
+    }
+
+    #audio-controls {
+        padding: 20px 10px; /* Aumenta o padding em telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px; /* Reduz o tamanho da fonte em telas menores */
+    }
+
+    #music-controls button {
+        width: 100%; /* Botões ocupam 100% da largura em telas menores */
+    }
+
+    #music-controls {
+        align-items: center; /* Centraliza os itens */
+    }
+}
